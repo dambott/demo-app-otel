@@ -1,0 +1,4 @@
+application: $K8S_APPLICATION
+cluster: $K8S_CLUSTER
+service: payments
+shard: blue

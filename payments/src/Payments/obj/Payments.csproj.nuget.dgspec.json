@@ -1,0 +1,85 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/dbott/Documents/GitHub/demo-app-master/payments/src/Payments/Payments.csproj": {}
+  },
+  "projects": {
+    "/Users/dbott/Documents/GitHub/demo-app-master/payments/src/Payments/Payments.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/dbott/Documents/GitHub/demo-app-master/payments/src/Payments/Payments.csproj",
+        "projectName": "Payments",
+        "projectPath": "/Users/dbott/Documents/GitHub/demo-app-master/payments/src/Payments/Payments.csproj",
+        "packagesPath": "/Users/dbott/.nuget/packages/",
+        "outputPath": "/Users/dbott/Documents/GitHub/demo-app-master/payments/src/Payments/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/dbott/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "OpenTelemetry.Exporter.OpenTelemetryProtocol": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "OpenTelemetry.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[1.0.0-rc9.2, )"
+            },
+            "OpenTelemetry.Instrumentation.AspNetCore": {
+              "target": "Package",
+              "version": "[1.0.0-rc9.2, )"
+            },
+            "OpenTelemetry.Instrumentation.Http": {
+              "target": "Package",
+              "version": "[1.0.0-rc9.2, )"
+            },
+            "YamlDotNet": {
+              "target": "Package",
+              "version": "[11.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

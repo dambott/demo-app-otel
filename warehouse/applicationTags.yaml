@@ -1,0 +1,7 @@
+application: tacocat
+cluster: bare-metal
+service: warehouse
+shard: blue
+customTags:
+  location: Palo-Alto
+  env: production

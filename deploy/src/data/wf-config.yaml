@@ -1,0 +1,7 @@
+reportingMechanism: proxy
+proxyHost: $WF_PROXY_HOST
+proxyMetricsPort: 2878
+proxyDistributionsPort: 2878
+proxyTracingPort: 4317
+
+reportTraces: true
