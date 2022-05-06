@@ -97,6 +97,8 @@ spec:
           volumeMounts:
             - name: conf
               mountPath: /conf
+            - name: otel
+              mountPath: /otel
           resources:
             limits:
               memory: 512Mi
@@ -106,6 +108,10 @@ spec:
         - name: conf
           configMap:
             name: app-config-green
+            defaultMode: 0744
+        - name: otel
+          configMap:
+            name: otel-config
             defaultMode: 0744
 ---
 apiVersion: v1
