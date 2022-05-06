@@ -35,9 +35,16 @@ spec:
             secretKeyRef:
               name: wf-token
               key: token
-        # Uncomment the below lines to consume Zipkin/Istio traces
+        # Uncomment the below lines to consume Zipkin/Istio traces and OTEL grpc
         - name: WAVEFRONT_PROXY_ARGS
           value: --traceListenerPorts 30000  --otlpGrpcListenerPorts 4317
+        resources:
+         requests:
+            cpu: 100m
+           memory: 1Gi
+         limits:
+           cpu: 1000m
+            memory: 4Gi
         ports:
         - containerPort: 2878
           protocol: TCP

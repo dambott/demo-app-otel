@@ -30,7 +30,6 @@ then
 	mkdir ../services
 fi
 for f in services/* ; do
-	if 
 	echo "creating ../$f"
 	envsubst < $f > ../$f
 done
