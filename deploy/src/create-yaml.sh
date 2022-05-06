@@ -29,8 +29,7 @@ if [ ! -d "../services/" ]
 then 
 	mkdir ../services
 fi
-for f in services/* ; do
-	if 
+for f in services/* ; do 
 	echo "creating ../$f"
 	envsubst < $f > ../$f
 done
