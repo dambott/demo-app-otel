@@ -8,8 +8,6 @@ import (
 	"math/rand"
 	"net/http"
 	"time"
-
-	opentracing "github.com/opentracing/opentracing-go"
 )
 
 var RAND = rand.New(rand.NewSource(time.Now().UnixNano()))
@@ -34,25 +32,24 @@ func WriteError(w http.ResponseWriter, err string, statusCode int) []byte {
 	return bytes
 }
 
-func GETCall(url string, body io.Reader, spanCtx opentracing.SpanContext) (*http.Response, error) {
+func GETCall(url string, body io.Reader) (*http.Response, error) {
 	req, err := http.NewRequest("GET", url, body)
 	if err != nil {
 		return nil, err
 	}
 
-	opentracing.GlobalTracer().Inject(spanCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
-
+	//opentracing.GlobalTracer().Inject(spanCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
 	return http.DefaultClient.Do(req)
 }
 
-func POSTCall(url string, contentType string, body io.Reader, spanCtx opentracing.SpanContext) (*http.Response, error) {
+func POSTCall(url string, contentType string, body io.Reader) (*http.Response, error) {
 	req, err := http.NewRequest("POST", url, body)
 	if err != nil {
 		return nil, err
 	}
 	req.Header.Set("Content-Type", contentType)
 
-	opentracing.GlobalTracer().Inject(spanCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
+	//opentracing.GlobalTracer().Inject(spanCtx, opentracing.HTTPHeaders, opentracing.HTTPHeadersCarrier(req.Header))
 
 	return http.DefaultClient.Do(req)
 }

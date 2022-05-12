@@ -2,26 +2,21 @@ package inventory
 
 import (
 	"fmt"
+	"github.com/go-chi/chi"
 	"io"
 	"log"
 	"net/http"
-
-	"github.com/go-chi/chi"
-	"github.com/opentracing/opentracing-go"
-	otrext "github.com/opentracing/opentracing-go/ext"
-	otrlog "github.com/opentracing/opentracing-go/log"
 	. "wavefront.com/polyglot/inventory/internal"
 )
 
 type InventoryService struct {
 	HostURL string
 	Router  *chi.Mux
-	tracer  opentracing.Tracer
 }
 
-func NewServer() Server {
+func NewServer() *InventoryService {
 	r := chi.NewRouter()
-	server := &InventoryService{GlobalConfig.InventoryHost, r, opentracing.GlobalTracer()}
+	server := &InventoryService{GlobalConfig.InventoryHost, r}
 	r.Route("/inventory", func(r chi.Router) {
 		r.Get("/available/{itemId}", server.available)
 		r.Post("/checkout/{orderId}", server.checkout)
@@ -35,10 +30,12 @@ func (s *InventoryService) Start() error {
 }
 
 func (s *InventoryService) available(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Inventory service available")
 	span := NewServerSpan(r, "available")
-	defer span.Finish()
 
-	go async(span.Context())
+	defer span.End()
+
+	go async(r)
 	// span.LogFields(otrlog.String("event", "created async"))
 
 	RandSimDelay()
@@ -49,8 +46,8 @@ func (s *InventoryService) available(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if !exists {
-		otrext.Error.Set(span, true)
-		span.LogFields(otrlog.String("error.kind", "item does not exist"))
+		//otrext.Error.Set(span, true)
+		//span.LogFields(otrlog.String("error.kind", "item does not exist"))
 		WriteError(w, "Item does not exist", http.StatusNotFound)
 		return
 	}
@@ -58,27 +55,28 @@ func (s *InventoryService) available(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *InventoryService) checkout(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Inventory service checkout")
 	span := NewServerSpan(r, "checkout")
-	defer span.Finish()
+	defer span.End()
 
-	go async(span.Context())
+	go async(r)
 
 	RandSimDelay()
 
 	if RAND.Float32() < GlobalConfig.SimFailCheckout {
-		otrext.Error.Set(span, true)
-		span.LogFields(
-			otrlog.String("error.kind", "gen-failure"),
-			otrlog.String("message", "service unavailable"),
-		)
+		//otrext.Error.Set(span, true)
+		//span.LogFields(
+		//	otrlog.String("error.kind", "gen-failure"),
+		//	otrlog.String("message", "service unavailable"),
+		//)
 		WriteError(w, "checkout failure", http.StatusServiceUnavailable)
 		return
 	}
 
-	resp, err := callWarehouse(span.Context())
+	resp, err := callWarehouse(r)
 	if err != nil {
-		otrext.Error.Set(span, true)
-		span.LogFields(otrlog.String("message", err.Error()))
+		//otrext.Error.Set(span, true)
+		//span.LogFields(otrlog.String("message", err.Error()))
 		WriteError(w, err.Error(), http.StatusPreconditionFailed)
 		return
 	}
@@ -89,20 +87,22 @@ func (s *InventoryService) checkout(w http.ResponseWriter, r *http.Request) {
 	if resp.StatusCode == http.StatusOK || resp.StatusCode == http.StatusAccepted {
 		io.Copy(w, resp.Body)
 	} else {
-		otrext.Error.Set(span, true)
+		//otrext.Error.Set(span, true)
 		WriteError(w, fmt.Sprintf("failed to checkout: %s", resp.Status), resp.StatusCode)
 	}
 }
 
-func callWarehouse(spanCtx opentracing.SpanContext) (*http.Response, error) {
+func callWarehouse(r *http.Request) (*http.Response, error) {
+	span := NewServerSpan(r, "callWarehouse")
+	defer span.End()
 	getURL := fmt.Sprintf("http://%s/warehouse/%s", GlobalConfig.WarehouseHost, "32jf")
-	return GETCall(getURL, nil, spanCtx)
+	//return GETCall(getURL, nil, spanCtx)
+	return GETCall(getURL, nil)
 }
 
-func async(ctx opentracing.SpanContext) {
-	tracer := opentracing.GlobalTracer()
-	span := tracer.StartSpan("inventoryAsync", opentracing.FollowsFrom(ctx))
-	defer span.Finish()
+func async(r *http.Request) {
+	span := NewServerSpan(r, "inventoryAsync")
+	defer span.End()
 	RandSimDelay()
 	RandSimDelay()
 }

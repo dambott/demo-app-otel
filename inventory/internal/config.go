@@ -41,12 +41,12 @@ func InitGlobalConfig() {
 		ProxyHost:              "",
 		ProxyPort:              2878,
 		ProxyDistributionsPort: 40000,
-		ProxyTracingPort:       30000,
+		ProxyTracingPort:       4317,
 
 		Cluster: "kerrupt",
 		Shard:   "primary",
 
-		Source: "",
+		Source: "payments",
 
 		SimFailCheckout:  0.02,
 		SimFailAvailable: 0.03,

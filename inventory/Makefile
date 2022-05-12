@@ -1,4 +1,5 @@
 ARCH?=amd64
+#ARCH?=arm64
 OUT_DIR?=./target
 GOLANG_VERSION?=1.11
 
@@ -27,6 +28,6 @@ build-linux: clean fmt
 	GOARCH=$(ARCH) GOOS=linux CGO_ENABLED=0 go build -ldflags "$(LDFLAGS)" -o $(OUT_DIR)/$(ARCH)/$(BINARY_NAME) ./cmd/inventory/
 
 clean:
-	rm -f $(OUT_DIR)/$(ARCH)/$(BINARY_NAME)
+	rm -f $(BINARY_NAME)
 
 .PHONY: all fmt container clean
