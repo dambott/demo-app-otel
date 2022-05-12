@@ -105,12 +105,14 @@ spec:
             requests:
               memory: 350Mi
       volumes:
-        - name: conf
-          configMap:
-            name: app-config-green
-            defaultMode: 0744
-            name: otel-config
-            defaultMode: 0744
+      - name: conf
+        configMap:
+          name: app-config-green
+          defaultMode: 0744
+      - name: otel
+        configMap:
+          name: otel-config
+          defaultMode: 0744
 ---
 apiVersion: v1
 kind: Service
@@ -125,3 +127,4 @@ spec:
   ports:
   - name: application
     port: 50052
+
