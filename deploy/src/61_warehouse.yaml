@@ -27,6 +27,7 @@ spec:
         imagePullPolicy: Always
         command:
         - "python3"
+        - "-u"
         - "manage.py"
         - "runserver"
         - "0.0.0.0:50060"
@@ -77,6 +78,7 @@ spec:
           imagePullPolicy: Always
           command:
             - "python3"
+            - "-u"
             - "manage.py"
             - "runserver"
             - "0.0.0.0:50060"

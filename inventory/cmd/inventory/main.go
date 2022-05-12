@@ -28,8 +28,10 @@ func main() {
 	}
 	log.Printf("Inventory config2")
 
+	// Enable this to see the traces on stdout/logs
 	//closer := NewStdoutTracer()
 
+	// Use regular OTEL grpc tracer
 	closer := NewGlobalTracer(GlobalConfig.Service)
 	defer closer.Close()
 	log.Printf("Inventory config3")

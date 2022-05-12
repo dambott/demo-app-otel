@@ -3,6 +3,7 @@ import sys
 import time
 import traceback
 import requests
+import logging
 import resource
 
 from concurrent.futures import ThreadPoolExecutor
@@ -19,50 +20,22 @@ from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.trace import set_span_in_context
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-#from opentelemetry.launcher import configure_opentelemetry
-
-#from opentelemetry.shim import opentracing_shim
-
-# example of setting resource labels
-#def set_resource_labels(self):
-#       labels = {
-#           "service.name": "warehouse",
-#           "service.version": "1.1",
-#           "k8s.cluster.name":"dmbDemo",
-#           "application.name": "tacocat",
-#           "application": "tacocat",
-#           "shard": "blue",
-#           "cluster": "eric"
-#
-#       }
-#       r = Resource(labels)
-#       trace.set_tracer_provider().resource = r.merge(
-#           trace.get_tracer_provider().resource
-#
-#       )
-
-#logging.basicConfig(level=logging.INFO)
-#logger = logging.getLogger(__name__)
-
-# Define which OpenTelemetry Tracer provider implementation to use.
-#tracer_provider = trace.get_tracer_provider()
-
-
 resource = settings.RESOURCE
-
-#resource = Resource(attributes={
-#      "service.name": "warehouse",
-#      "application": "tacocat"
-#    })
+logging.basicConfig(level=logging.INFO)
+log = logging.getLogger(__name__)
+log.debug("views running")
+log.debug("test: %s", "string")
 
 # Configure the tracer to export traces to OTLP GRPC
 
-#trace.set_tracer_provider(TracerProvider())
+#otlp_exporter = OTLPSpanExporter(endpoint="http://tacocat-wavefront-proxy:4317", insecure=True)
 
-#trace.set_tracer_provider(
-#    TracerProvider(resource=Resource.create({"service.name": "warehouse"}))
-#)
-otlp_exporter = OTLPSpanExporter(endpoint="http://tacocat-wavefront-proxy:4317", insecure=True)
+cfgStr = "%s:%s" % (settings.PROXYHOST, settings.PROXYTRACINGPORT)
+log.debug("cfgStr:%s", cfgStr)
+print("%s",cfgStr)
+#otlp_exporter = OTLPSpanExporter(endpoint="http://tanzu-observability-demo-wavefront-proxy:4317", insecure=True)
+otlp_exporter = OTLPSpanExporter(endpoint=cfgStr, insecure=True)
+
 
 tracer_provider = TracerProvider(resource=resource)
 trace.set_tracer_provider(tracer_provider)

@@ -145,15 +145,16 @@ func NewGlobalTracer(serviceName string) io.Closer {
 
 func NewServerSpan(req *http.Request, spanName string) trace.Span {
 	log.Printf("NewServerSpan 1: span: %s", spanName)
+
+	ctx := req.Context()
+
+	// pretty print request header info (including parent span info)
 	fmt.Printf("--> %s\n\n", formatRequest(req))
-	//_, span := otel.Tracer(name).Start(context.Background(), spanName)
-	_, span := Gtrace.Start(req.Context(), spanName)
-	//log.Printf("Span context: %s", span.SpanContext())
+
+	ctx, span := Gtrace.Start(ctx, spanName, trace.WithSpanKind(trace.SpanKindServer))
+	defer span.End()
 
 	log.Printf("NewServerSpan 2")
-	//ctx, span := Trace.Start(req.Context(), spanName)
-	defer span.End()
-	log.Printf("NewServerSpan 3")
 	return span
 }
 

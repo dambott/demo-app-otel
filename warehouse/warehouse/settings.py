@@ -130,8 +130,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 WF_REPORTING_CONFIG = None
-#with open("/conf/wf-config.yaml", "r") as stream:
-#    WF_REPORTING_CONFIG = yaml.load(stream, Loader=yaml.FullLoader)
+with open("/conf/wf-config.yaml", "r") as stream:
+    cfg_yaml = yaml.load(stream, Loader=yaml.FullLoader)
+    PROXYHOST = cfg_yaml.get('proxyHost')
+    PROXYMETRICSPORT = cfg_yaml.get('proxyMetricsPort')
+    PROXYTRACINGPORT = cfg_yaml.get('proxyTracingPort')
+
 
 #APPLICATION_TAGS = None
 with open("/conf/warehouse-app-tags.yaml", "r") as stream:
