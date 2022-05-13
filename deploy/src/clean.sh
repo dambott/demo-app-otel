@@ -31,6 +31,9 @@ if [ -d "../services/" ]; then
 	rm -rf ../services/;
 fi
 
-rm -f 01_app-config-blue.yaml
-rm -f 01_app-config-green.yaml
-rm -f ../02_otel-config.yaml
+for f in "01_app-config-blue.yaml" "01_app-config-green.yaml" "02_otel-config.yaml" ; do
+	if test -f "../$f"; then
+		echo "deleting ../$f";
+		rm ../$f;
+	fi
+done
