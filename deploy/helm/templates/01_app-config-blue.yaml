@@ -86,9 +86,6 @@ data:
     cluster: {{ .Values.cluster }}
     service: payments
     shard: blue
-    customTags:
-      location: {{ .Values.customtags.location }}
-      env: {{ .Values.customtags.environment }}
 
 
   payments-app.yaml: |

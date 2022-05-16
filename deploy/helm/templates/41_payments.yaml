@@ -32,7 +32,7 @@ spec:
         - "dotnet"
         - "run"
         - "--no-build"
-        - "-p"
+        - "--project"
         - "/payments/src/Payments/"
         ports:
         - containerPort: 50063
@@ -86,7 +86,7 @@ spec:
             - "dotnet"
             - "run"
             - "--no-build"
-            - "-p"
+            - "--project"
             - "/payments/src/Payments/"
           ports:
             - containerPort: 50063

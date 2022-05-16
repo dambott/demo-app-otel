@@ -27,6 +27,8 @@ spec:
         imagePullPolicy: Always
         command:
         - "java"
+        - "-javaagent:opentelemetry-javaagent.jar"
+        - "-Dotel.javaagent.configuration-file=/otel/styling.blue.properties"
         - "-jar"
         - "/styling.jar"
         - "server"
@@ -41,6 +43,8 @@ spec:
         volumeMounts:
         - name: conf
           mountPath: /conf
+        - name: otel
+          mountPath: /otel
         resources:
           limits:
             memory: 512Mi
@@ -50,6 +54,10 @@ spec:
       - name: conf
         configMap:
           name: app-config-blue
+          defaultMode: 0744
+      - name: otel
+        configMap:
+          name: otel-config
           defaultMode: 0744
 ---
 apiVersion: apps/v1
@@ -81,6 +89,8 @@ spec:
           imagePullPolicy: Always
           command:
             - "java"
+            - "-javaagent:opentelemetry-javaagent.jar"
+            - "-Dotel.javaagent.configuration-file=/otel/styling.blue.properties"
             - "-jar"
             - "/styling.jar"
             - "server"
@@ -95,6 +105,8 @@ spec:
           volumeMounts:
             - name: conf
               mountPath: /conf
+            - name: otel
+              mountPath: /otel
           resources:
             limits:
               memory: 512Mi
@@ -104,6 +116,10 @@ spec:
         - name: conf
           configMap:
             name: app-config-green
+            defaultMode: 0744
+        - name: otel
+          configMap:
+            name: otel-config
             defaultMode: 0744
 ---
 apiVersion: v1

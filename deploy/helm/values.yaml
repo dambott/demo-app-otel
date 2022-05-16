@@ -6,19 +6,20 @@ replicaCount:
   blue: 1
   green: 1
 
-namespace: "tanzu-observability-demo"
+namespace: "tanzu-helm-test"
 
-cluster: homelab-1
+cluster: dmb1
 
 image:
-  repository:  public.ecr.aws/tanzu_observability_demo_app/to-demo
+  #  repository:  public.ecr.aws/tanzu_observability_demo_app/to-demo
+  repository:  dambott
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 wavefront:
-   base64_token: "[your base64 encoded token here"
-   url: "https://[your cluster].wavefront.com/api/"
+   base64_token: "MjkzNmIzNWUtMWJkMy00MzM1LWI0YzctNDVjZjgxZWIyZWIy"
+   url: "https://longboard.wavefront.com/api/"
 
 customtags:
    location: homelab

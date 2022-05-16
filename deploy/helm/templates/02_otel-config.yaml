@@ -1,0 +1,95 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-config
+  namespace: {{ .Values.namespace }}
+data:
+  delivery.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=delivery
+
+
+  delivery.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=delivery
+
+
+  loadgen.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=loadgen
+
+
+  notification.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=notification
+
+
+  notification.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=notification
+
+
+  packaging.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=packaging
+
+
+  packaging.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=packaging
+
+
+  printing.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=printing
+
+
+  printing.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=printing
+
+
+  shopping.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=shopping
+
+
+  shopping.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=shopping
+
+
+  styling.blue.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=styling
+
+
+  styling.green.properties: |
+    otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
+    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.service.name=styling
