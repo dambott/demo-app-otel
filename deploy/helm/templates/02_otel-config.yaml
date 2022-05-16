@@ -7,89 +7,89 @@ data:
   delivery.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=delivery
 
 
   delivery.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=delivery
 
 
   loadgen.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=loadgen
 
 
   notification.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=notification
 
 
   notification.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=notification
 
 
   packaging.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=packaging
 
 
   packaging.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=packaging
 
 
   printing.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=printing
 
 
   printing.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=printing
 
 
   shopping.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=shopping
 
 
   shopping.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=shopping
 
 
   styling.blue.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=styling
 
 
   styling.green.properties: |
     otel.exporter.otlp.traces.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
     otel.exporter.otlp.metrics.endpoint=http://{{ .Values.namespace }}-wavefront-proxy:4317
-    otel.resource.attributes=process.command_line='x',application={{ .Values.namespace }}
+    otel.resource.attributes=process.command_line='x',application={{ include "tanzu-observability-demo.fullname" .  }}
     otel.service.name=styling

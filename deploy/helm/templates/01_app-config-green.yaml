@@ -36,7 +36,7 @@ data:
     	"proxyHost":              "{{ .Values.namespace   }}-wavefront-proxy",
     	"proxyPort":              2878,
     	"proxyDistributionsPort": 40000,
-    	"proxyTracingPort":       30000,
+    	"proxyTracingPort":       4317,
     
     	"simFailCheckout":  0.02,
     	"simFailAvailable": 0.03,
@@ -198,7 +198,7 @@ data:
     proxyHost: {{ .Values.namespace   }}-wavefront-proxy
     proxyMetricsPort: 2878
     proxyDistributionsPort: 2878
-    proxyTracingPort: 30000
+    proxyTracingPort: 4317
     
     reportTraces: true
 
