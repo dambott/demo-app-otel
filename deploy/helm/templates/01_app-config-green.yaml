@@ -86,10 +86,6 @@ data:
     cluster: {{ .Values.cluster }}
     service: payments
     shard: green
-    customTags:
-      location: {{ .Values.customtags.location }}
-      env: {{ .Values.customtags.environment }}
-
 
   payments-app.yaml: |
     port: 50063
