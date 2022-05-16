@@ -2,30 +2,28 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 
+replicaCount:
   blue: 1
   green: 1
 
-namespace: "tanzu-helm-test"
+namespace: "tanzu-observability-demo"
 
-cluster: dmb1
+cluster: homelab-1
 
 image:
-  #  repository:  public.ecr.aws/tanzu_observability_demo_app/to-demo
-  repository:  dambott
+  repository:  public.ecr.aws/tanzu_observability_demo_app/to-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
 wavefront:
-   base64_token: "MjkzNmIzNWUtMWJkMy00MzM1LWI0YzctNDVjZjgxZWIyZWIy"
-   url: "https://longboard.wavefront.com/api/"
+  base64_token: "[your base64 encoded token here"
+  url: "https://[your cluster].wavefront.com/api/"
 
 customtags:
-   location: homelab
-   environment: dev
+  location: homelab
+  environment: dev
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
