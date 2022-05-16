@@ -14,7 +14,7 @@ image:
   repository:  public.ecr.aws/tanzu_observability_demo_app/to-demo
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "" 
 
 wavefront:
   base64_token: "[your base64 encoded token here"
