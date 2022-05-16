@@ -197,7 +197,7 @@ data:
     reportingMechanism: proxy
     proxyHost: {{ .Values.namespace   }}-wavefront-proxy
     proxyMetricsPort: 2878
-    proxyDistributionsPort: 2878
+    proxyDistributionsPort: 40000
     proxyTracingPort: 4317
     
     reportTraces: true
