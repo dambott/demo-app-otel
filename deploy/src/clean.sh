@@ -37,3 +37,6 @@ for f in "01_app-config-blue.yaml" "01_app-config-green.yaml" "02_otel-config.ya
 		rm ../$f;
 	fi
 done
+
+rm  01_app-config-blue.yaml
+rm  01_app-config-green.yaml
